@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if the CFILE variable is set
+if [ -z "$CFILE" ]; then
+  echo "CFILE variable is not set."
+  exit 1
+fi
+
+# Check if the C file exists
+if [ ! -f "$CFILE" ]; then
+  echo "C file '$CFILE' does not exist."
+  exit 1
+fi
+
+# Extract the base name (without extension) from CFILE
+BASENAME=$(basename -s .c "$CFILE")
+
+# Generate the assembly code using GCC with Intel syntax and save it to .s file
+gcc -S -masm=intel "$CFILE" -o "${BASENAME}.s"
+
+echo "Assembly code generated: ${BASENAME}.s"

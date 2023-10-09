@@ -3,13 +3,7 @@
 /**
  * main - Entry point
  *
- * Description: Prints all possible different combinations of two digits.
- * Numbers must be separated by ,, followed by a space
- * All numbers should be printed with two digits. 1 should be printed as 01
- * The combination of numbers must be separated by a comma, followed by a space
- * The combinations of numbers should be printed in ascending order
- * 00 01 and 01 00 are considered as the same
- * combination of the numbers 0 and 1
+ * Description: Prints all possible different combinations of two digits
  *
  * Return: Always 0 (Success)
  */
@@ -17,22 +11,24 @@ int main(void)
 {
 int i, j;
 
-for (i = 0; i <= 98; i++)
+i = 0;
+while (i < 10)
 {
-for (j = i + 1; j <= 99; j++)
+j = i + 1;
+while (j < 10)
 {
-putchar((i / 10) + '0');
-putchar((i % 10) + '0');
-putchar(' ');
-putchar((j / 10) + '0');
-putchar((j % 10) + '0');
+putchar(i + '0');
+putchar(j + '0');
 
-if (!(i == 98 && j == 99))
+if (i != 8 || j != 9)
 {
 putchar(',');
 putchar(' ');
 }
+
+j++;
 }
+i++;
 }
 
 putchar('\n');

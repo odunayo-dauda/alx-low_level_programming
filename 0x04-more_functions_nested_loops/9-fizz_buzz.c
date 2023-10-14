@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
@@ -24,4 +23,13 @@ void fizz_buzz(void)
 		else
 			printf("\n");
 	}
+}
+/**
+ * main - Entry point of the program.
+ *  Return: 0 (success)
+ */
+int main(void)
+{
+	fizz_buzz();
+	return (0);
 }

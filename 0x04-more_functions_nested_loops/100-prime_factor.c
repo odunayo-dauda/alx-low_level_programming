@@ -1,18 +1,35 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * largest_prime_factor - Finds the largest prime factor of a number.
- * @n: The number to find the largest prime factor for.
- *  Return: The largest prime factor of the number.
+ * is_prime - Checks if a number is prime
+ * @n: The number to check
+ * Return: 1 if n is prime, 0 otherwise
+ */
+int is_prime(long n)
+{
+	if (n <= 1)
+		return (0);
+	if (n <= 3)
+		return (1);
+	if (n % 2 == 0 || n % 3 == 0)
+		return (0);
+
+	for (long i = 5; i * i <= n; i += 6)
+	{
+		if (n % i == 0 || n % (i + 2) == 0)
+			return (0);
+	}
+
+	return (1);
+}
+
+/**
+ * largest_prime_factor - Finds the largest prime factor of a number
+ * @n: The number to find the largest prime factor of
+ * Return: The largest prime factor
  */
 long largest_prime_factor(long n)
 {
-	if (n < 0)
-	{
-		printf("-");
-		n = -n;
-	}
-
 	long largest = -1;
 
 	while (n % 2 == 0)
@@ -21,31 +38,30 @@ long largest_prime_factor(long n)
 		n /= 2;
 	}
 
-	for (long i = 3; i * i <= n; i += 2)
+	for (long i = 3; i <= n; i += 2)
 	{
 		while (n % i == 0)
 		{
-			largest = i;
+			if (is_prime(i))
+				largest = i;
 			n /= i;
 		}
 	}
 
-	if (n > 2)
-		largest = n;
-
 	return (largest);
 }
-/**
- *  main - Entry point.
- *  Return: The largest prime factor of the number.
- */
 
+/**
+ * main - Entry point to app
+ * Return: The success
+ */
 int main(void)
 {
-	long long n = 612852475143LL;
+	long number = 612852475143;
+	long largest_prime = largest_prime_factor(number);
 
-	long result = largest_prime_factor(n);
+	_putchar(largest_prime + '0');
+	_putchar('\n');
 
-	printf("%ld\n", result);
 	return (0);
 }

@@ -1,11 +1,13 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "main.h"
+
+int _putchar(char c);
 
 int main(void)
 {
 	int i, length;
-	char password[12];
+	char password[13];
 
 	srand(time(NULL));
 
@@ -20,7 +22,12 @@ int main(void)
 
 	password[length] = '\0';
 
-	printf("%s\n");
+	for (i = 0; i < length; i++)
+	{
+		_putchar(password[i]);
+	}
+
+	_putchar('\n');
 
 	return (0);
 }

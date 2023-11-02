@@ -1,17 +1,6 @@
 #include "main.h"
 
 /**
- * is_palindrome - Check if a string is a palindrome using recursion
- * @s: The string to check
- * Return: 1 if it's a palindrome, 0 if not
- */
-int is_palindrome(char *s)
-{
-	int length = _strlen_recursion(s);
-
-	return (check_palindrome(s, 0, length - 1));
-}
-/**
  * check_palindrome - Helper function to check
  * if a string is a palindrome using recursion
  * @s: The string to check
@@ -19,6 +8,7 @@ int is_palindrome(char *s)
  * @end: The ending index
  * Return: 1 if it's a palindrome, 0 if not
  */
+
 int check_palindrome(char *s, int start, int end)
 {
 	if (start >= end)
@@ -28,6 +18,17 @@ int check_palindrome(char *s, int start, int end)
 		return (0);
 
 	return (check_palindrome(s, start + 1, end - 1));
+}
+/**
+ * is_palindrome - Check if a string is a palindrome using recursion
+ * @s: The string to check
+ * Return: 1 if it's a palindrome, 0 if not
+ */
+int is_palindrome(char *s)
+{
+	int length = _strlen_recursion(s);
+
+	return (check_palindrome(s, 0, length - 1));
 }
 /**
  * _strlen_recursion - Calculate the length of a string using recursion

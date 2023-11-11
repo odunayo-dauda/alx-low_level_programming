@@ -4,7 +4,8 @@
  * create_array - Creates an array of chars.
  * @size: The size of the array.
  * @c: The character with which to initialize the array.
- * Returns: -Null value.
+ * Return: A pointero the created array, or NULL if size is
+ * 0 or if memory allocation fails.
  */
 char *create_array(unsigned int size, char c)
 {
